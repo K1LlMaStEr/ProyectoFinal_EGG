@@ -94,6 +94,8 @@ public class Usuario {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+    
+    
       
       
      
