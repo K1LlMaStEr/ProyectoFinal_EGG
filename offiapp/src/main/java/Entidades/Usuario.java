@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Entidades;
 
+import enumeraciones.Rol;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,10 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
-/**
- *
- * @author pulaf
- */
+
 @Entity
 public class Usuario {
      @Id
@@ -26,11 +20,11 @@ public class Usuario {
     @GenericGenerator(name="uuid", strategy="uuid2") 
     private String id;
      private String nombre;
-     private String contrasenia;
+     private String Password;
      private String email;
      
       @Enumerated(EnumType.STRING)
-     private String Rol;
+      private Rol rol;
      
       @Temporal(TemporalType.DATE)
     private Date fecha;
@@ -38,14 +32,7 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(String id, String nombre, String contrasenia, String email, String Rol, Date fecha) {
-        this.id = id;
-        this.nombre = nombre;
-        this.contrasenia = contrasenia;
-        this.email = email;
-        this.Rol = Rol;
-        this.fecha = fecha;
-    }
+
 
     public String getId() {
         return id;
@@ -63,12 +50,12 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getPassword() {
+        return Password;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setPassword(String contrasenia) {
+        this.Password = contrasenia;
     }
 
     public String getEmail() {
@@ -79,13 +66,7 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getRol() {
-        return Rol;
-    }
-
-    public void setRol(String Rol) {
-        this.Rol = Rol;
-    }
+  
 
     public Date getFecha() {
         return fecha;
@@ -94,7 +75,13 @@ public class Usuario {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-    
+     public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
     
       
       
