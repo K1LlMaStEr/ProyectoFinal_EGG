@@ -58,7 +58,12 @@
 	  <version>5.7.8</version>
 	  <type>jar</type>
 	 </dependency>
+         <dependency>
+ <groupId>org.springframework.boot</groupId>
+ <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
 	</dependencies>
+        
 
 	<build>
 		<plugins>
