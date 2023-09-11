@@ -1,32 +1,48 @@
 
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Entidades;
 
+import java.util.ArrayList;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
-
+/**
+ *
+ * @author gonza
+ */
 @Entity
 public class Proveedor {
-      @Id
+    @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name="uuid", strategy="uuid2") 
     private String id;
-     private String nombre;
-     private String descripcion;
-     private int telefono;
-     private String servicioOfrecido;
+    private String nombreProv;
+    private int idProv;
+    private int telefono;
+    private ArrayList<Servicio>servicio;
+    private int precioHora;
+    private String descripcion;
+   
+     // @OnetoMany                 //VER ESO YA QUE ME DICE QUE ME FALTA EL REPOSITORIO
+    private Servicio servicios;          //Le coloque "servicio" dado que la palabra servio ya esta ocupada en el ArrayList     
 
     public Proveedor() {
     }
 
-    public Proveedor(String id, String nombre, String descripcion, int telefono, String servicioOfrecido) {
+    public Proveedor(String id, String nombreProv, int idProv, int telefono, ArrayList<Servicio> servicio, int precioHora, String descripcion, Servicio servicios) {
         this.id = id;
-        this.nombre = nombre;
-        this.descripcion = descripcion;
+        this.nombreProv = nombreProv;
+        this.idProv = idProv;
         this.telefono = telefono;
-        this.servicioOfrecido = servicioOfrecido;
+        this.servicio = servicio;
+        this.precioHora = precioHora;
+        this.descripcion = descripcion;
+        this.servicios = servicios;
     }
 
     public String getId() {
@@ -37,20 +53,20 @@ public class Proveedor {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNombreProv() {
+        return nombreProv;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombreProv(String nombreProv) {
+        this.nombreProv = nombreProv;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public int getIdProv() {
+        return idProv;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setIdProv(int idProv) {
+        this.idProv = idProv;
     }
 
     public int getTelefono() {
@@ -61,16 +77,37 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
-    public String getServicioOfrecido() {
-        return servicioOfrecido;
+    public ArrayList<Servicio> getServicio() {
+        return servicio;
     }
 
-    public void setServicioOfrecido(String servicioOfrecido) {
-        this.servicioOfrecido = servicioOfrecido;
+    public void setServicio(ArrayList<Servicio> servicio) {
+        this.servicio = servicio;
     }
-     
-     
-     
-     
+
+    public int getPrecioHora() {
+        return precioHora;
+    }
+
+    public void setPrecioHora(int precioHora) {
+        this.precioHora = precioHora;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Servicio getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(Servicio servicios) {
+        this.servicios = servicios;
+    }
     
+     
 }

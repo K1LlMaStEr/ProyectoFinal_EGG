@@ -26,10 +26,10 @@ public class ProveedorServicio {
 
         Proveedor proveedor = new Proveedor();
 
-        proveedor.setNombre(nombre);
+        proveedor.setNombreProv(nombre);
         proveedor.setDescripcion(descripcion);
         proveedor.setTelefono(telefono);
-        proveedor.setServicioOfrecido(servicioOfrecidos);
+        //proveedor.setServicioOfrecido(servicioOfrecidos);       //VER QUE VAMOS HACER YA QUE NO LO TENGO EN LA ENTIDAD
 
         //proveedor.setFecha(new Date());
         proveedorRepositorio.save(proveedor);
@@ -51,10 +51,10 @@ public class ProveedorServicio {
         if (respuesta.isPresent()) {
 
             proveedor = respuesta.get();
-            proveedor.setNombre(nombre);
+            proveedor.setNombreProv(nombre);
             proveedor.setDescripcion(descripcion);
             proveedor.setTelefono(telefono);
-            proveedor.setServicioOfrecido(servicioOfrecidos);
+           // proveedor.setServicioOfrecido(servicioOfrecidos);     //VER QUE VAMOS HACER YA QUE NO LO TENGO EN LA ENTIDAD
 
             proveedorRepositorio.save(proveedor);
         }

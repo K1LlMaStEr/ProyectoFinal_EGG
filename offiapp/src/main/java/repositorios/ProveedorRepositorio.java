@@ -20,3 +20,12 @@ public interface ProveedorRepositorio extends JpaRepository<Proveedor, String>{
     public Proveedor buscarPorEmail(@Param("email")String email);
     
 }
+
+/*@Repository
+public interface NoticiaRepositorio extends JpaRepository<Noticia, String> {
+    
+    @Query("SELECT n FROM Noticia n WHERE n.titulo = :titulo")
+    public List<Noticia> buscarPorTitulo(@Param("titulo") String titulo);
+    
+    
+}*/
