@@ -39,9 +39,9 @@ public class UsuarioServicio implements UserDetailsService {
     public void registrar(String nombre, String email, String password, String password2) throws MiException{
         validar(nombre, email, password, password2);
         Usuario usuario= new Usuario();
-        usuario.setNombre(nombre);
+        usuario.setNombreUser(nombre);
         usuario.setEmail(email);
-        usuario.setPassword(new BCryptPasswordEncoder().encode(password));
+        usuario.setContrasenia(new BCryptPasswordEncoder().encode(password));
         usuario.setRol(Rol.USER);
         usuarioRepositorio.save(usuario);
         
@@ -71,7 +71,7 @@ public class UsuarioServicio implements UserDetailsService {
             List<GrantedAuthority> permisos= new ArrayList();
             GrantedAuthority p= new SimpleGrantedAuthority("ROLE_"+ usuario.getRol().toString());
             permisos.add(p);
-            return new User(usuario.getEmail(),usuario.getPassword(),permisos);
+            return new User(usuario.getEmail(),usuario.getContrasenia(),permisos);
         
     }else{
             return null;
