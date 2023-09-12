@@ -6,14 +6,15 @@
 package Entidades;
 
 import enumeraciones.Rol;      // va en minuscula px la carpeta esta en minuscula 
-import java.util.Date;
+///import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.OneToMany;
+///import javax.persistence.Temporal;
+///import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 //import javax.persistence.OneToMany;
 /**
@@ -34,12 +35,10 @@ public class Usuario {
       @Enumerated(EnumType.STRING)
       private Rol rol;
       
-      //@OnetoMany                         //VER ESO YA QUE ME DICE QUE ME FALTA EL REPOSITORIO
-
+      @OneToMany              
       private Comentario comentario;
       
-      //@OnetoMany                        //VER ESO YA QUE ME DICE QUE ME FALTA EL REPOSITORIO
-
+      @OneToMany     
       private Calificacion calificacion;
 
     public Usuario() {
