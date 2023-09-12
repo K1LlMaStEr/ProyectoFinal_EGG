@@ -21,7 +21,7 @@ public class ProveedorServicio {
     private ProveedorRepositorio proveedorRepositorio;
 
     @Transactional
-    public void crearProovedor(String nombre, String descripcion, int telefono, String servicioOfrecidos) throws MiException {
+    public void crearProveedor(String nombre, String descripcion, int telefono, String servicioOfrecidos) throws MiException {
         validar(nombre, servicioOfrecidos);
 
         Proveedor proveedor = new Proveedor();
@@ -29,14 +29,14 @@ public class ProveedorServicio {
         proveedor.setNombreProv(nombre);
         proveedor.setDescripcion(descripcion);
         proveedor.setTelefono(telefono);
-        //proveedor.setServicioOfrecido(servicioOfrecidos);       //VER QUE VAMOS HACER YA QUE NO LO TENGO EN LA ENTIDAD
+      
 
         //proveedor.setFecha(new Date());
         proveedorRepositorio.save(proveedor);
 
     }
 
-    public List<Proveedor> listarNoticias() {
+    public List<Proveedor> listarProveedores() {
 
         List<Proveedor> proveedor = new ArrayList();
 
@@ -44,7 +44,7 @@ public class ProveedorServicio {
         return proveedor;
     }
 
-    public void modificarNoticia(String nombre, String descripcion, int telefono, String servicioOfrecidos, String id) throws MiException {
+    public void modificarProveedor(String nombre, String descripcion, int telefono, String servicioOfrecidos, String id) throws MiException {
         validar(nombre, servicioOfrecidos);
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
         Proveedor proveedor = new Proveedor();
@@ -54,17 +54,17 @@ public class ProveedorServicio {
             proveedor.setNombreProv(nombre);
             proveedor.setDescripcion(descripcion);
             proveedor.setTelefono(telefono);
-           // proveedor.setServicioOfrecido(servicioOfrecidos);     //VER QUE VAMOS HACER YA QUE NO LO TENGO EN LA ENTIDAD
+        
 
             proveedorRepositorio.save(proveedor);
         }
     }
 
-    public void eliminarNoticia(String id) throws MiException {
+    public void eliminarProveedor(String id) throws MiException {
 
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
         if (respuesta.isPresent()) {
-            Proveedor noticia = respuesta.get();
+            Proveedor proveedor = respuesta.get();
             proveedorRepositorio.deleteById(id);
         }
     }

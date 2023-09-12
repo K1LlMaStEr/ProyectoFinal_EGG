@@ -28,7 +28,7 @@ public class Proveedor {
     private int precioHora;
     private String descripcion;
    
-     // @OnetoMany                 //VER ESO YA QUE ME DICE QUE ME FALTA EL REPOSITORIO
+   
     private Servicio servicios;          //Le coloque "servicio" dado que la palabra servio ya esta ocupada en el ArrayList     
 
     public Proveedor() {
