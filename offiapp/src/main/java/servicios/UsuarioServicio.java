@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package servicios;
 
 import Entidades.Usuario;
@@ -41,6 +38,8 @@ public class UsuarioServicio implements UserDetailsService {
         
         
     }
+    
+    
      public void validar(String nombre, String email, String password, String password2) throws MiException  {
         
          if(nombre.isEmpty()||nombre==null){
