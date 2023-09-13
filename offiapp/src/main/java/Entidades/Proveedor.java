@@ -24,12 +24,12 @@ public class Proveedor {
     private String nombreProv;
     private int idProv;
     private int telefono;
-    private ArrayList<Servicio>servicio;
+    private String servicio;
     private int precioHora;
     private String descripcion;
    
      // @OnetoMany                 //VER ESO YA QUE ME DICE QUE ME FALTA EL REPOSITORIO
-    private Servicio servicios;          //Le coloque "servicio" dado que la palabra servio ya esta ocupada en el ArrayList     
+    private String email;          //Le coloque "servicio" dado que la palabra servio ya esta ocupada en el ArrayList     
 
     public Proveedor() {
     }
