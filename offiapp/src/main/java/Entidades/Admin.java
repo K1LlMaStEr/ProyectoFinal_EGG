@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package Entidades;
 
 import javax.persistence.Entity;
@@ -21,16 +18,16 @@ public class Admin {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombreAdm;
-    private int idAdm;
+    private String contrasenia;
     private String email;
 
     public Admin() {
     }
 
-    public Admin(String id, String nombreAdm, int idAdm, String email) {
+    public Admin(String id, String nombreAdm, String contrasenia, String email) {
         this.id = id;
         this.nombreAdm = nombreAdm;
-        this.idAdm = idAdm;
+        this.contrasenia = contrasenia;
         this.email = email;
     }
 
@@ -50,12 +47,12 @@ public class Admin {
         this.nombreAdm = nombreAdm;
     }
 
-    public int getIdAdm() {
-        return idAdm;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setIdAdm(int idAdm) {
-        this.idAdm = idAdm;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public String getEmail() {
@@ -65,14 +62,7 @@ public class Admin {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    @Override
-    public String toString() {
-        return "Admin{" + "id=" + id + ", nombreAdm=" + nombreAdm + ", idAdm=" + idAdm + ", email=" + email + '}';
-    }
-
-  
     
-
+    
+    
 }
-
