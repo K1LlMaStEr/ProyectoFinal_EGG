@@ -5,7 +5,7 @@
  */
 package controladores;
 
-import Entidades.Servicio;
+
 import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,7 +26,7 @@ public class ProvedorControlador {
         return "Proveedor_form.html";
     }
     @PostMapping ("/registro")
-    public String Registro(@RequestParam String nombreProv, int idProv, int telefono, ArrayList<Servicio> servicio, int precioHora, String descripcion, Servicio servicios){
+    public String Registro(@RequestParam String id, String nombreProv, String contrasenia, int telefono, String servicio, int precioHora, String descripcion, String email, int calificacion, String reseña){
         return "index.html";
     }
 

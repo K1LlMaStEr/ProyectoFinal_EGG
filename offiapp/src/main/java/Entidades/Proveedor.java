@@ -5,7 +5,7 @@
  */
 package Entidades;
 
-import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,27 +22,40 @@ public class Proveedor {
     @GenericGenerator(name="uuid", strategy="uuid2") 
     private String id;
     private String nombreProv;
+
  
+
+    private String contrasenia;
+
     private int telefono;
-    private ArrayList<Servicio>servicio;
+    private String servicio;
     private int precioHora;
     private String descripcion;
-   
-     // @OnetoMany                 //VER ESO YA QUE ME DICE QUE ME FALTA EL REPOSITORIO
-    private Servicio servicios;          //Le coloque "servicio" dado que la palabra servio ya esta ocupada en el ArrayList     
+
+
+     private String email;  
+     private int calificacion;
+     private String reseña;
+     
+       
+
 
     public Proveedor() {
     }
 
-    public Proveedor(String id, String nombreProv, int idProv, int telefono, ArrayList<Servicio> servicio, int precioHora, String descripcion, Servicio servicios) {
+    public Proveedor(String id, String nombreProv, String contrasenia, int telefono, String servicio, int precioHora, String descripcion, String email, int calificacion, String reseña) {
         this.id = id;
         this.nombreProv = nombreProv;
-        
+
+        this.contrasenia = contrasenia;
+
         this.telefono = telefono;
         this.servicio = servicio;
         this.precioHora = precioHora;
         this.descripcion = descripcion;
-        this.servicios = servicios;
+        this.email = email;
+        this.calificacion = calificacion;
+        this.reseña = reseña;
     }
 
     public String getId() {
@@ -61,6 +74,16 @@ public class Proveedor {
         this.nombreProv = nombreProv;
     }
 
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+
+
     public int getTelefono() {
         return telefono;
     }
@@ -69,11 +92,11 @@ public class Proveedor {
         this.telefono = telefono;
     }
 
-    public ArrayList<Servicio> getServicio() {
+    public String getServicio() {
         return servicio;
     }
 
-    public void setServicio(ArrayList<Servicio> servicio) {
+    public void setServicio(String servicio) {
         this.servicio = servicio;
     }
 
@@ -93,13 +116,33 @@ public class Proveedor {
         this.descripcion = descripcion;
     }
 
-    public Servicio getServicios() {
-        return servicios;
+    public String getEmail() {
+        return email;
     }
 
-    public void setServicios(Servicio servicios) {
-        this.servicios = servicios;
+    public void setEmail(String email) {
+        this.email = email;
     }
-    
+
+    public int getCalificacion() {
+        return calificacion;
+    }
+
+    public void setCalificacion(int calificacion) {
+        this.calificacion = calificacion;
+    }
+
+    public String getReseña() {
+        return reseña;
+    }
+
+    public void setReseña(String reseña) {
+        this.reseña = reseña;
+    }
+
      
+
+   
+    
+
 }

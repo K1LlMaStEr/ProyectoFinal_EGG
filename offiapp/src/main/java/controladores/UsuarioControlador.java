@@ -5,9 +5,7 @@
  */
 package controladores;
 
-import Entidades.Calificacion;
-import Entidades.Comentario;
-import com.grupoD.offiapp.UsuarioServicio;
+
 import enumeraciones.Rol;
 import excepciones.MiException;
 import java.util.logging.Level;
@@ -19,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import servicios.UsuarioServicio;
 
 /**
  *
@@ -33,15 +32,15 @@ private UsuarioServicio usuarioServicio;
 
     @GetMapping ("/registrar")
     public String Registrar(){
-        return "usuario_form.html";
+        return "registro_usuario.html";
     }
     @PostMapping ("/registro")
-    public String Registro(@RequestParam String nombreUser, int idUser, String direccion, String email, String contrasenia, Rol rol, Comentario comentario, Calificacion calificacion) throws MiException {
+    public String Registro(@RequestParam String nombreUser, int idUser, String direccion, String email, String contrasenia, Rol rol) throws MiException {
      try{
         usuarioServicio.registrar(nombreUser, email, contrasenia, contrasenia);
      }catch(MiException ex){
          Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
-         return "usuario_form.html";
+         return "registro_usuariohtml";
      }
         return "index.html";
     }
