@@ -41,7 +41,7 @@ public class UsuarioServicio implements UserDetailsService {
         
         
     }
-     public void validar(String nombre, String email, String password, String password2) throws MiException  {
+    public void validar(String nombre, String email, String password, String password2) throws MiException  {
         
          if(nombre.isEmpty()||nombre==null){
         throw new MiException("el nombre no puede estar vacio");

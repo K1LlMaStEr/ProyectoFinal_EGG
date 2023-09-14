@@ -17,29 +17,31 @@ import javax.persistence.OneToMany;
 ///import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 //import javax.persistence.OneToMany;
+
 /**
  *
  * @author pulaf
  */
 @Entity
 public class Usuario {
-     @Id
+
+    @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name="uuid", strategy="uuid2") 
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-     private String nombreUser;
-     private int idUser;
-     private String direccion;
-     private String email;
-     private String contrasenia;
-      @Enumerated(EnumType.STRING)
-      private Rol rol;
-      
-      @OneToMany              
-      private Comentario comentario;
-      
-      @OneToMany     
-      private Calificacion calificacion;
+    private String nombreUser;
+    private int idUser;
+    private String direccion;
+    private String email;
+    private String contrasenia;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+
+    @OneToMany
+    private Comentario comentario;
+
+    @OneToMany
+    private Calificacion calificacion;
 
     public Usuario() {
     }
@@ -128,6 +130,4 @@ public class Usuario {
         this.calificacion = calificacion;
     }
 
-    
-      
 }

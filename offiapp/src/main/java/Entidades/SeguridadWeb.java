@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
+
 public class SeguridadWeb extends WebSecurityConfigurerAdapter{
     @Autowired
  
@@ -27,8 +28,7 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter{
     @Autowired
     
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService( usuarioServicio)
-                .passwordEncoder(new BCryptPasswordEncoder());
+        auth.userDetailsService( usuarioServicio).passwordEncoder(new BCryptPasswordEncoder());
     }
     
 
@@ -41,22 +41,22 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter{
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/css/*", "/js/*", "/img/*", "/**")
-                .permitAll()
+                    .antMatchers("/admin/*").hasRole("ADMIN")
+                    .antMatchers("/css/*", "/js/*", "/img/*", "/**")
+                    .permitAll()
                 .and().formLogin()
-                .loginPage("/login")
-                .loginProcessingUrl("/logincheck")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/")
-                .permitAll()
+                    .loginPage("/login")
+                    .loginProcessingUrl("/logincheck")
+                    .usernameParameter("email")
+                    .passwordParameter("password")
+                    .defaultSuccessUrl("/")
+                    .permitAll()
                 .and().logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login")
-                .permitAll()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login")
+                    .permitAll()
                 .and().csrf()
-                .disable();
+                    .disable();
 
     }
 }
