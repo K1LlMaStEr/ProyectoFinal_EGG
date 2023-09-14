@@ -22,7 +22,7 @@ public class Proveedor {
     @GenericGenerator(name="uuid", strategy="uuid2") 
     private String id;
     private String nombreProv;
-    private int idProv;
+ 
     private int telefono;
     private ArrayList<Servicio>servicio;
     private int precioHora;
@@ -37,7 +37,7 @@ public class Proveedor {
     public Proveedor(String id, String nombreProv, int idProv, int telefono, ArrayList<Servicio> servicio, int precioHora, String descripcion, Servicio servicios) {
         this.id = id;
         this.nombreProv = nombreProv;
-        this.idProv = idProv;
+        
         this.telefono = telefono;
         this.servicio = servicio;
         this.precioHora = precioHora;
@@ -59,14 +59,6 @@ public class Proveedor {
 
     public void setNombreProv(String nombreProv) {
         this.nombreProv = nombreProv;
-    }
-
-    public int getIdProv() {
-        return idProv;
-    }
-
-    public void setIdProv(int idProv) {
-        this.idProv = idProv;
     }
 
     public int getTelefono() {
