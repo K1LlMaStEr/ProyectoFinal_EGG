@@ -28,11 +28,13 @@ public class Proveedor {
     private int precioHora;
     private String descripcion;
 
+
      private String email;  
      private int calificacion;
      private String reseña;
      
        
+
 
     public Proveedor() {
     }

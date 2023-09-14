@@ -21,15 +21,22 @@ public class ProveedorServicio {
     private ProveedorRepositorio proveedorRepositorio;
 
     @Transactional
+
+
     public void crearProveedor(String nombreProv, String descripcion, int telefono, String servicio) throws MiException {
         validar(nombreProv, servicio);
+
 
         Proveedor proveedor = new Proveedor();
 
         proveedor.setNombreProv(nombreProv);
         proveedor.setDescripcion(descripcion);
         proveedor.setTelefono(telefono);
-        
+
+      
+
+        //proveedor.setFecha(new Date());
+
         proveedorRepositorio.save(proveedor);
 
     }
@@ -42,8 +49,10 @@ public class ProveedorServicio {
         return proveedor;
     }
 
+
     public void modificarProveedor(String nombreProv, String descripcion, int telefono, String servicioOfrecidos, String id) throws MiException {
         validar(nombreProv, servicioOfrecidos);
+
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
         Proveedor proveedor = new Proveedor();
         if (respuesta.isPresent()) {
@@ -52,7 +61,11 @@ public class ProveedorServicio {
             proveedor.setNombreProv(nombreProv);
             proveedor.setDescripcion(descripcion);
             proveedor.setTelefono(telefono);
+
+        
+
             proveedor.setServicio(descripcion);     //VER QUE VAMOS HACER YA QUE NO LO TENGO EN LA ENTIDAD
+
 
             proveedorRepositorio.save(proveedor);
         }

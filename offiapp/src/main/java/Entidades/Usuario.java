@@ -17,24 +17,31 @@ import javax.persistence.OneToMany;
 ///import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 //import javax.persistence.OneToMany;
+
 /**
  *
  * @author pulaf
  */
 @Entity
 public class Usuario {
-     @Id
+
+    @Id
     @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name="uuid", strategy="uuid2") 
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombreUser;
+
     private String direccion;
     private String email;
     private String contrasenia;
     @Enumerated(EnumType.STRING)
     private Rol rol;
+
+
+
     private Proveedor proveedor;
    
+
 
     public Usuario() {
     }
@@ -105,7 +112,5 @@ public class Usuario {
         this.proveedor = proveedor;
     }
 
-    
-   
-      
+
 }
