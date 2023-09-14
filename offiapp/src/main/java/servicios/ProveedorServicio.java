@@ -21,17 +21,22 @@ public class ProveedorServicio {
     private ProveedorRepositorio proveedorRepositorio;
 
     @Transactional
-    public void crearProveedor(String nombre, String descripcion, int telefono, String servicioOfrecidos) throws MiException {
-        validar(nombre, servicioOfrecidos);
+
+
+    public void crearProveedor(String nombreProv, String descripcion, int telefono, String servicio) throws MiException {
+        validar(nombreProv, servicio);
+
 
         Proveedor proveedor = new Proveedor();
 
-        proveedor.setNombreProv(nombre);
+        proveedor.setNombreProv(nombreProv);
         proveedor.setDescripcion(descripcion);
         proveedor.setTelefono(telefono);
+
       
 
         //proveedor.setFecha(new Date());
+
         proveedorRepositorio.save(proveedor);
 
     }
@@ -44,17 +49,23 @@ public class ProveedorServicio {
         return proveedor;
     }
 
-    public void modificarProveedor(String nombre, String descripcion, int telefono, String servicioOfrecidos, String id) throws MiException {
-        validar(nombre, servicioOfrecidos);
+
+    public void modificarProveedor(String nombreProv, String descripcion, int telefono, String servicioOfrecidos, String id) throws MiException {
+        validar(nombreProv, servicioOfrecidos);
+
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
         Proveedor proveedor = new Proveedor();
         if (respuesta.isPresent()) {
 
             proveedor = respuesta.get();
-            proveedor.setNombreProv(nombre);
+            proveedor.setNombreProv(nombreProv);
             proveedor.setDescripcion(descripcion);
             proveedor.setTelefono(telefono);
+
         
+
+            proveedor.setServicio(descripcion);     //VER QUE VAMOS HACER YA QUE NO LO TENGO EN LA ENTIDAD
+
 
             proveedorRepositorio.save(proveedor);
         }
@@ -71,10 +82,10 @@ public class ProveedorServicio {
 
     private void validar(String nombre, String servicioOfrecidos) throws MiException {
         if (nombre.isEmpty() || nombre == null) {
-            throw new MiException("el cuerpo no puede estar vacio");
+            throw new MiException("el nombre no puede estar vacio");
         }
         if (servicioOfrecidos.isEmpty() || servicioOfrecidos == null) {
-            throw new MiException("el titulo no puede estar vacio");
+            throw new MiException("el servicio no puede estar vacio");
         }
     }
 

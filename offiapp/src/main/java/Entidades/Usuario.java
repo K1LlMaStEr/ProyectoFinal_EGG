@@ -30,32 +30,30 @@ public class Usuario {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombreUser;
-    private int idUser;
+
     private String direccion;
     private String email;
     private String contrasenia;
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-    @OneToMany
-    private Comentario comentario;
 
-    @OneToMany
-    private Calificacion calificacion;
+
+    private Proveedor proveedor;
+   
+
 
     public Usuario() {
     }
 
-    public Usuario(String id, String nombreUser, int idUser, String direccion, String email, String contrasenia, Rol rol, Comentario comentario, Calificacion calificacion) {
+    public Usuario(String id, String nombreUser, String direccion, String email, String contrasenia, Rol rol, Proveedor proveedor) {
         this.id = id;
         this.nombreUser = nombreUser;
-        this.idUser = idUser;
         this.direccion = direccion;
         this.email = email;
         this.contrasenia = contrasenia;
         this.rol = rol;
-        this.comentario = comentario;
-        this.calificacion = calificacion;
+        this.proveedor = proveedor;
     }
 
     public String getId() {
@@ -72,14 +70,6 @@ public class Usuario {
 
     public void setNombreUser(String nombreUser) {
         this.nombreUser = nombreUser;
-    }
-
-    public int getIdUser() {
-        return idUser;
-    }
-
-    public void setIdUser(int idUser) {
-        this.idUser = idUser;
     }
 
     public String getDireccion() {
@@ -114,20 +104,13 @@ public class Usuario {
         this.rol = rol;
     }
 
-    public Comentario getComentario() {
-        return comentario;
+    public Proveedor getProveedor() {
+        return proveedor;
     }
 
-    public void setComentario(Comentario comentario) {
-        this.comentario = comentario;
+    public void setProveedor(Proveedor proveedor) {
+        this.proveedor = proveedor;
     }
 
-    public Calificacion getCalificacion() {
-        return calificacion;
-    }
-
-    public void setCalificacion(Calificacion calificacion) {
-        this.calificacion = calificacion;
-    }
 
 }
