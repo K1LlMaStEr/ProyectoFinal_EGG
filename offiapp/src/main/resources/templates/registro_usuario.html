@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns: sec="http://www.thymeleaf.org/extras/spring-security">
-     
+
     <body>
         <header class="header container">
-             <nav class="nav">
+            <nav class="nav">
                 <ul class="ul">
                     <li> 
                         <a class="registrarte" href="/login">Iniciar sesión</a>
                     </li>
-                       
+
                     <li> 
                         <a class="registrarte" href="/">Crear usuario como proveedor</a>
                     </li>
                 </ul>
 
-             </nav>
+            </nav>
 
         </header>
 
-         <!--No se pq aca me aparece el espacio ese en blanco :(( -->
+        <!--No se pq aca me aparece el espacio ese en blanco :(( -->
 
-        <section id="main-section">
+        <section id="main-section">     
 
             <!--en el action va el controlador del registro de un usuario-->
             <form th:action="@{/registro}" method="POST">
@@ -120,7 +120,7 @@
                                 />
                         </div>
                     </div>
-                     <br>
+                    <br>
 
                     <div class="registrar">
                         <button class="btn btn-primary link volverr" type="submit">REGISTRARME</button>  
@@ -128,7 +128,7 @@
                     </div>
                 </div>
             </form>
-            
+
         </section>
 
     </body>

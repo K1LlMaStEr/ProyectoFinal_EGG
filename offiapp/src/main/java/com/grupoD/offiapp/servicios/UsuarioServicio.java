@@ -22,6 +22,7 @@ import com.grupoD.offiapp.repositorios.UsuarioRepositorio;
 
 @Service
 public class UsuarioServicio implements UserDetailsService {
+    
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
