@@ -1,7 +1,7 @@
 
 package repositorios;
 
-import Entidades.Admin;
+import com.grupoD.offiapp.Entidades.Admin;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

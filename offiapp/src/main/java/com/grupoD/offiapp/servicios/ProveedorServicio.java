@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.stereotype.Service;
 import com.grupoD.offiapp.repositorios.ProveedorRepositorio;
 import com.grupoD.offiapp.repositorios.UsuarioRepositorio;
