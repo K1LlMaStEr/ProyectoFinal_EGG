@@ -1,9 +1,9 @@
-package servicios;
+package com.grupoD.offiapp.servicios;
 
-import Entidades.Proveedor;
-import Entidades.Usuario;
-import enumeraciones.Rol;
-import excepciones.MiException;
+import com.grupoD.offiapp.Entidades.Proveedor;
+import com.grupoD.offiapp.Entidades.Usuario;
+import com.grupoD.offiapp.enumeraciones.Rol;
+import com.grupoD.offiapp.excepciones.MiException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -11,8 +11,8 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import repositorios.ProveedorRepositorio;
-import repositorios.UsuarioRepositorio;
+import com.grupoD.offiapp.repositorios.ProveedorRepositorio;
+import com.grupoD.offiapp.repositorios.UsuarioRepositorio;
 
 @Service
 public class ProveedorServicio {
@@ -22,10 +22,8 @@ public class ProveedorServicio {
 
     @Transactional
 
-
     public void crearProveedor(String nombreProv, String descripcion, int telefono, String servicio) throws MiException {
         validar(nombreProv, servicio);
-
 
         Proveedor proveedor = new Proveedor();
 
@@ -33,10 +31,7 @@ public class ProveedorServicio {
         proveedor.setDescripcion(descripcion);
         proveedor.setTelefono(telefono);
 
-      
-
         //proveedor.setFecha(new Date());
-
         proveedorRepositorio.save(proveedor);
 
     }
@@ -49,7 +44,7 @@ public class ProveedorServicio {
         return proveedor;
     }
 
-
+    @Transactional
     public void modificarProveedor(String nombreProv, String descripcion, int telefono, String servicioOfrecidos, String id) throws MiException {
         validar(nombreProv, servicioOfrecidos);
 
@@ -62,15 +57,13 @@ public class ProveedorServicio {
             proveedor.setDescripcion(descripcion);
             proveedor.setTelefono(telefono);
 
-        
-
             proveedor.setServicio(descripcion);     //VER QUE VAMOS HACER YA QUE NO LO TENGO EN LA ENTIDAD
-
 
             proveedorRepositorio.save(proveedor);
         }
     }
 
+    @Transactional
     public void eliminarProveedor(String id) throws MiException {
 
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);

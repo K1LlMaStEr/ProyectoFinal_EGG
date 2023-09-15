@@ -1,7 +1,7 @@
-package servicios;
+package com.grupoD.offiapp.servicios;
 
-import Entidades.Admin;
-import excepciones.MiException;
+import com.grupoD.offiapp.Entidades.Admin;
+import com.grupoD.offiapp.excepciones.MiException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -9,7 +9,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import repositorios.AdminRepositorio;
+import com.grupoD.offiapp.repositorios.AdminRepositorio;
 
 @Service
 public class AdminServicio {
@@ -38,7 +38,7 @@ public class AdminServicio {
         admin = adminRepositorio.findAll();
         return admin;
     }
-
+    @Transactional
     public void modificarAdmin(String nombreAdm, String email, String id) throws MiException {
         validar(nombreAdm, email);
         Optional<Admin> respuesta = adminRepositorio.findById(id);
@@ -51,7 +51,7 @@ public class AdminServicio {
             adminRepositorio.save(admin);
         }
     }
-
+    @Transactional
     public void eliminarAdmin(String id) throws MiException {
 
         Optional<Admin> respuesta = adminRepositorio.findById(id);
