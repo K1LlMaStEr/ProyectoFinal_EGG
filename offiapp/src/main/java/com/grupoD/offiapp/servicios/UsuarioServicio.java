@@ -1,9 +1,9 @@
 
-package servicios;
+package com.grupoD.offiapp.servicios;
 
-import Entidades.Usuario;
-import enumeraciones.Rol;
-import excepciones.MiException;
+import com.grupoD.offiapp.Entidades.Usuario;
+import com.grupoD.offiapp.enumeraciones.Rol;
+import com.grupoD.offiapp.excepciones.MiException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.transaction.Transactional;
@@ -16,7 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import repositorios.UsuarioRepositorio;
+import com.grupoD.offiapp.repositorios.UsuarioRepositorio;
 
 
 
@@ -28,6 +28,8 @@ public class UsuarioServicio implements UserDetailsService {
 
     @Transactional
     public void registrar(String nombre, String email, String password, String password2) throws MiException{
+       
+        System.out.println("Holas");
         validar(nombre, email, password, password2);
         Usuario usuario= new Usuario();
         usuario.setNombreUser(nombre);
@@ -35,7 +37,7 @@ public class UsuarioServicio implements UserDetailsService {
         usuario.setContrasenia(new BCryptPasswordEncoder().encode(password));
         usuario.setRol(Rol.USER);
         usuarioRepositorio.save(usuario);
-        
+        System.out.println("Hola");
         
     }
 

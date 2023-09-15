@@ -3,12 +3,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Entidades;
+package com.grupoD.offiapp.Entidades;
 
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -16,6 +17,7 @@ import org.hibernate.annotations.GenericGenerator;
  * @author gonza
  */
 @Entity
+@Table(name="Proveedor")
 public class Proveedor {
     @Id
     @GeneratedValue(generator = "uuid")

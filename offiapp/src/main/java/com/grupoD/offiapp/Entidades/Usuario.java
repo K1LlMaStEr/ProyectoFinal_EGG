@@ -3,16 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entidades;
+package com.grupoD.offiapp.Entidades;
 
-import enumeraciones.Rol;      // va en minuscula px la carpeta esta en minuscula 
+import com.grupoD.offiapp.enumeraciones.Rol;      // va en minuscula px la carpeta esta en minuscula 
 ///import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 ///import javax.persistence.Temporal;
 ///import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
@@ -23,6 +25,7 @@ import org.hibernate.annotations.GenericGenerator;
  * @author pulaf
  */
 @Entity
+@Table(name = "Usuario")
 public class Usuario {
 
     @Id
@@ -37,11 +40,8 @@ public class Usuario {
     @Enumerated(EnumType.STRING)
     private Rol rol;
 
-
-
+    @ManyToOne
     private Proveedor proveedor;
-   
-
 
     public Usuario() {
     }
@@ -111,6 +111,5 @@ public class Usuario {
     public void setProveedor(Proveedor proveedor) {
         this.proveedor = proveedor;
     }
-
 
 }
