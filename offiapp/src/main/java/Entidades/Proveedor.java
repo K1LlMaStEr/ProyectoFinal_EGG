@@ -22,7 +22,11 @@ public class Proveedor {
     @GenericGenerator(name="uuid", strategy="uuid2") 
     private String id;
     private String nombreProv;
+
+ 
+
     private String contrasenia;
+
     private int telefono;
     private String servicio;
     private int precioHora;
@@ -42,7 +46,9 @@ public class Proveedor {
     public Proveedor(String id, String nombreProv, String contrasenia, int telefono, String servicio, int precioHora, String descripcion, String email, int calificacion, String reseña) {
         this.id = id;
         this.nombreProv = nombreProv;
+
         this.contrasenia = contrasenia;
+
         this.telefono = telefono;
         this.servicio = servicio;
         this.precioHora = precioHora;
@@ -68,6 +74,7 @@ public class Proveedor {
         this.nombreProv = nombreProv;
     }
 
+
     public String getContrasenia() {
         return contrasenia;
     }
@@ -75,6 +82,7 @@ public class Proveedor {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
+
 
     public int getTelefono() {
         return telefono;
