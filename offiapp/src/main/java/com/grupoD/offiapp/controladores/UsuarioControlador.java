@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controladores;
+package com.grupoD.offiapp.controladores;
 
 
-import enumeraciones.Rol;
-import excepciones.MiException;
+import com.grupoD.offiapp.enumeraciones.Rol;
+import com.grupoD.offiapp.excepciones.MiException;
+import com.grupoD.offiapp.servicios.UsuarioServicio;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,7 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import servicios.UsuarioServicio;
+
 
 /**
  *
