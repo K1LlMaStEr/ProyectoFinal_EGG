@@ -1,5 +1,5 @@
 
-package enumeraciones;
+package com.grupoD.offiapp.enumeraciones;
 
 /**
  *

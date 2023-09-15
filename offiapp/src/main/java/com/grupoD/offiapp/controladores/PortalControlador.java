@@ -1,10 +1,11 @@
-package controladores;
+package com.grupoD.offiapp.controladores;
 
+import com.grupoD.offiapp.excepciones.MiException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import servicios.UsuarioServicio;
+import com.grupoD.offiapp.servicios.UsuarioServicio;
 
 @Controller
 @RequestMapping("/")
@@ -14,7 +15,8 @@ public class PortalControlador {
     private UsuarioServicio usuarioServicio;
     
     @GetMapping("/")
-    public String index() {
+    public String index() throws MiException {
+        usuarioServicio.registrar("Tatiana", "tati@gmail.com", "123456", "123456");
         return "index.html";
     }
 

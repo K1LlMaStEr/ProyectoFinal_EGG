@@ -1,9 +1,10 @@
 
-package Entidades;
+package com.grupoD.offiapp.Entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import org.hibernate.annotations.GenericGenerator;
 
 /**
@@ -11,6 +12,7 @@ import org.hibernate.annotations.GenericGenerator;
  * @author hplap
  */
 @Entity
+@Table(name="Admin")
 public class Admin {
 
     @Id
