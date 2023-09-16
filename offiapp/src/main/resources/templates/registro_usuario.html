@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns: sec="http://www.thymeleaf.org/extras/spring-security">
-
+      <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OffApp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" type="text/css" href="estilo.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
     <body>
+        
         <header class="header container">
             <nav class="nav">
                 <ul class="ul">
@@ -16,14 +34,14 @@
 
             </nav>
 
-        </header>
+        </header><!--
 
-        <!--No se pq aca me aparece el espacio ese en blanco :(( -->
+        No se pq aca me aparece el espacio ese en blanco :(( 
 
-        <section id="main-section">     
+-->        <section id="main-section">     
 
-            <!--en el action va el controlador del registro de un usuario-->
-            <form th:action="@{/registro}" method="POST">
+            en el action va el controlador del registro de un usuario
+            <form th:action="@{/usuario/registrar}" method="POST"> 
                 <div
                     th:if="${error != null}"
                     class="alert alert-danger d-flex align-items-center"
@@ -88,8 +106,8 @@
                                 type="mail"
                                 class="form-control"
                                 id="correo"
-                                name="correo"
-                                th:value="${correo}"
+                                name="email"
+                                th:value="${email}"
                                 />
                         </div>
                     </div>

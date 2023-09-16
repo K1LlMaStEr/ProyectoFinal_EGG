@@ -27,7 +27,7 @@ public class UsuarioServicio implements UserDetailsService {
     @Autowired
     private UsuarioRepositorio usuarioRepositorio;
 
-
+//asi tiene que estar en el thymelife
     @Transactional
     public void registrar(String nombre, String email, String password, String password2) throws MiException{
        

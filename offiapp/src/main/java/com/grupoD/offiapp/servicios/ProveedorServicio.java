@@ -1,8 +1,7 @@
 package com.grupoD.offiapp.servicios;
 
 import com.grupoD.offiapp.Entidades.Proveedor;
-import com.grupoD.offiapp.Entidades.Usuario;
-import com.grupoD.offiapp.enumeraciones.Rol;
+
 import com.grupoD.offiapp.excepciones.MiException;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import com.grupoD.offiapp.repositorios.ProveedorRepositorio;
-import com.grupoD.offiapp.repositorios.UsuarioRepositorio;
+
 
 @Service
 public class ProveedorServicio {
@@ -45,8 +44,8 @@ public class ProveedorServicio {
     }
 
     @Transactional
-    public void modificarProveedor(String nombreProv, String descripcion, int telefono, String servicioOfrecidos, String id) throws MiException {
-        validar(nombreProv, servicioOfrecidos);
+    public void modificarProveedor(String nombreProv, String descripcion, int telefono, String servicio, String id) throws MiException {
+        validar(nombreProv, servicio);
 
         Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
         Proveedor proveedor = new Proveedor();
