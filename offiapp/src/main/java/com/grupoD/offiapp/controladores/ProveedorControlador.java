@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controladores;
+package com.grupoD.offiapp.controladores;
 
 
 import java.util.ArrayList;
@@ -19,14 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
     @Controller
-@RequestMapping ("/provedor")
-public class ProvedorControlador {
-    @GetMapping ("/registrar")
-    public String Registrar(){
-        return "Proveedor_form.html";
+@RequestMapping ("/proveedor")
+public class ProveedorControlador {
+    @GetMapping ("/registro")
+    public String Registro(){
+        return "registro_proveedor.html";
     }
-    @PostMapping ("/registro")
-    public String Registro(@RequestParam String id, String nombreProv, String contrasenia, int telefono, String servicio, int precioHora, String descripcion, String email, int calificacion, String reseña){
+    @PostMapping ("/registrar")
+    public String Registrar(@RequestParam String id, String nombreProv, String contrasenia, int telefono, String servicio, int precioHora, String descripcion, String email, int calificacion, String reseña){
         return "index.html";
     }
 

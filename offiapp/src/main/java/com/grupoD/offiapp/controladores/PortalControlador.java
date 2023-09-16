@@ -19,6 +19,10 @@ public class PortalControlador {
         usuarioServicio.registrar("Tatiana", "tati@gmail.com", "123456", "123456");
         return "index.html";
     }
+    
+    
+    
+    
 
 
 }
