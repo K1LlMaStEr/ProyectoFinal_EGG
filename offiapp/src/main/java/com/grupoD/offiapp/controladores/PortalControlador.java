@@ -16,7 +16,7 @@ public class PortalControlador {
     
     @GetMapping("/")
     public String index() throws MiException {
-        usuarioServicio.registrar("Tatiana", "tati@gmail.com", "123456", "123456");
+    
         return "index.html";
     }
     

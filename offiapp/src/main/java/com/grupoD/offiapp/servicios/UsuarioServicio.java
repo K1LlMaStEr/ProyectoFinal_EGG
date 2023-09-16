@@ -29,38 +29,36 @@ public class UsuarioServicio implements UserDetailsService {
 
 //asi tiene que estar en el thymelife
     @Transactional
-    public void registrar(String nombre, String email, String password, String password2) throws MiException{
+    public void registrar(String nombreUser, String email, String password, String password2) throws MiException{
        
-        System.out.println("Holas");
-        validar(nombre, email, password, password2);
+       
+        validar(nombreUser, email, password, password2);
         Usuario usuario= new Usuario();
-        usuario.setNombreUser(nombre);
+        usuario.setNombreUser(nombreUser);  
         usuario.setEmail(email);
         usuario.setContrasenia(new BCryptPasswordEncoder().encode(password));
         usuario.setRol(Rol.USER);
         usuarioRepositorio.save(usuario);
-        System.out.println("Hola");
+      
         
     }
 
     
-     public void validar(String nombre, String email, String password, String password2) throws MiException  {
+   public void validar(String nombreUser, String email, String password, String password2) throws MiException  {
+    if (nombreUser == null || nombreUser.isEmpty()) {
+        throw new MiException("El nombre no puede estar vacío");
+    }
+    if (email == null || email.isEmpty()) {
+        throw new MiException("El email no puede estar vacío");
+    }
+    if (password == null || password.isEmpty() || password.length() <= 5) {
+        throw new MiException("La contraseña no puede estar vacía y debe tener al menos 6 caracteres");
+    }
+    if (!password.equals(password2)) {
+        throw new MiException("Las contraseñas no coinciden");
+    }
+}
 
-        
-         if(nombre.isEmpty()||nombre==null){
-        throw new MiException("el nombre no puede estar vacio");
-    }    
-    if(email.isEmpty()||email==null){
-        throw new MiException("el email no puede estar vacio");
-    }
-     if(password.isEmpty()||password==null|| password.length()<=5){
-        throw new MiException("el password no puede estar vacio y tener menos de 5 digitos");
-    }    
-     if(!password.equals(password2)){
-          throw new MiException("los passwords no pueden ser distintos");
-     }
-        
-    }
      
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

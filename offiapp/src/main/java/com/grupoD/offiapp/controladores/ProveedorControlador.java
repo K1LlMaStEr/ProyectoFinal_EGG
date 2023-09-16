@@ -23,7 +23,7 @@ public class ProveedorControlador {
     }
 
     @PostMapping("/registro")
-    public String Registro(@RequestParam String id, @RequestParam String nombreProv,
+    public String Registro(@RequestParam String nombreProv,
             @RequestParam String contrasenia, @RequestParam int telefono, @RequestParam String servicio,
             @RequestParam int precioHora, @RequestParam(required = false) String descripcion,
             @RequestParam String email, ModelMap modelo) {

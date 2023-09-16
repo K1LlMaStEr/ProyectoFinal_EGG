@@ -17,6 +17,7 @@ import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,26 +33,27 @@ private UsuarioServicio usuarioServicio;
 
     @GetMapping ("/registro")
     public String Registro(){
-        System.out.println("estoy en el regristrar");
+       
         return "registro_usuario.html";
     }
 
     @PostMapping ("/registrar")
-    public String Registrar(@RequestParam String nombreUser, int idUser, String direccion, String email, String contrasenia, Rol rol) throws MiException {
+    public String Registrar(@RequestParam String nombreUser,  String direccion, String email, String password,String password2,  Rol rol, ModelMap modelo) throws MiException {
 
 
      try{
-        usuarioServicio.registrar(nombreUser, email, contrasenia, contrasenia);
-//        modelo.put("exito", "Usted se ha registrado correctamente");
+        usuarioServicio.registrar(nombreUser, email, password, password2);
+       modelo.put("exito", "Usted se ha registrado correctamente");
+        return "index.html";
      }catch(MiException ex){
 
          Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
 
-//        modelo.put("error", ex.getMessage());
+       modelo.put("error", ex.getMessage());
 
          return "registro_usuario.html";
      }
-        return "index.html";
+       
     }
 }
 
