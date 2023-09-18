@@ -11,7 +11,10 @@ import com.grupoD.offiapp.excepciones.MiException;
 import com.grupoD.offiapp.servicios.ProveedorServicio;
 import java.util.ArrayList;
 import java.util.logging.Level;
-import java.util.logging.Logger;
+
+
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -27,12 +30,14 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 
     @Controller
-@RequestMapping ("/provedor")
+@RequestMapping ("/proveedor")
 public class ProveedorControlador {
+
         @Autowired 
         private ProveedorServicio proveedorServicio;
     @GetMapping ("/registrar")
-    public String Registrar(){
+    public String proveedorRegistrar(){
+       
         return "registro_provedor.html";
     }
     @PostMapping ("/registro")
@@ -45,7 +50,7 @@ public class ProveedorControlador {
         modelo.put("exito", "Usted se registro correctamente");
      }catch(MiException ex){
           modelo.put("error", ex.getMessage());
-         return "registro_usuario.html";
+         return "registro_provedor.html";
      }
         return "index.html";
     }

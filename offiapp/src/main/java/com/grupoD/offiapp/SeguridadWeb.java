@@ -27,36 +27,38 @@ public class SeguridadWeb extends WebSecurityConfigurerAdapter{
     @Autowired
     
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-        auth.userDetailsService(usuarioServicio)
+       auth.userDetailsService(usuarioServicio)
                 .passwordEncoder(new BCryptPasswordEncoder());
     }
     
 
     @Override
     protected AuthenticationManager authenticationManager() throws Exception {
-        return super.authenticationManager(); //To change body of generated methods, choose Tools | Templates.
-    }
+       return super.authenticationManager(); //To change body of generated methods, choose Tools | Templates.
+   }
 
     @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .authorizeRequests()
-                .antMatchers("/admin/*").hasRole("ADMIN")
+   protected void configure(HttpSecurity http) throws Exception {
+       http
+              .authorizeRequests()
+               .antMatchers("/admin/*").hasRole("ADMIN")
                 .antMatchers("/css/*", "/js/*", "/img/*", "/**")
                 .permitAll()
+               .antMatchers("/proveedor/registrar").permitAll()
+                 .antMatchers("/usuario/registrar").permitAll()
                 .and().formLogin()
-                .loginPage("/login")
+             .loginPage("/login")
                 .loginProcessingUrl("/logincheck")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/")
-                .permitAll()
-                .and().logout()
+               .usernameParameter("email")
+               .passwordParameter("password")
+               .defaultSuccessUrl("/")
+               .permitAll()
+               .and().logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login")
-                .permitAll()
-                .and().csrf()
-                .disable();
-
-    }
+               .permitAll()
+               .and().csrf()
+               .disable();
+                
+   }
 }
