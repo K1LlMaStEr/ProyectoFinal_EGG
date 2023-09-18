@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+
 package com.grupoD.offiapp.controladores;
-
-
-
 
 import com.grupoD.offiapp.enumeraciones.Rol;
 import com.grupoD.offiapp.excepciones.MiException;
@@ -24,36 +23,36 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-  @Controller
-@RequestMapping ("/usuario")
+@Controller
+@RequestMapping("/usuario")
 public class UsuarioControlador {
-  
-@Autowired
-private UsuarioServicio usuarioServicio;
 
-    @GetMapping ("/registro")
-    public String Registro(){
-       
+    @Autowired
+    private UsuarioServicio usuarioServicio;
+
+    @GetMapping("/registro")
+    public String Registro() {
+
         return "registro_usuario.html";
     }
 
-    @PostMapping ("/registrar")
-    public String Registrar(@RequestParam String nombreUser,  String direccion, String email, String password,String password2,  Rol rol, ModelMap modelo) throws MiException {
+    @PostMapping("/registrar")
+    public String Registrar(@RequestParam String nombreUser, @RequestParam String direccion, @RequestParam String email, @RequestParam String password, String password2, ModelMap modelo) throws MiException {
 
+        try {
+            usuarioServicio.registrar(nombreUser, direccion, email, password, password2);
+            modelo.put("exito", "Usted se ha registrado correctamente");
+            return "index.html";
+        } catch (MiException ex) {
 
-     try{
-        usuarioServicio.registrar(nombreUser, email, password, password2);
-       modelo.put("exito", "Usted se ha registrado correctamente");
-        return "index.html";
-     }catch(MiException ex){
+           // Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
 
-         Logger.getLogger(UsuarioControlador.class.getName()).log(Level.SEVERE, null, ex);
+            modelo.put("error", ex.getMessage());
 
-       modelo.put("error", ex.getMessage());
+            return "registro_usuario.html";
+        }
 
-         return "registro_usuario.html";
-     }
-       
     }
-}
 
+
+}
