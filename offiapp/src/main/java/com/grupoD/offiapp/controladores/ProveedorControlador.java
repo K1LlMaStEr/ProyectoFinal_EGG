@@ -1,3 +1,5 @@
+package com.grupoD.offiapp.controladores;
+
 import com.grupoD.offiapp.excepciones.MiException;
 import com.grupoD.offiapp.servicios.ProveedorServicio;
 import java.util.ArrayList;
@@ -12,28 +14,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/provedor")
+@RequestMapping("/proveedor")
 public class ProveedorControlador {
     @Autowired
     private ProveedorServicio proveedorServicio;
 
-    @GetMapping("/registrar")
-    public String Registrar() {
-        return "registro_provedor.html";
+    @GetMapping("/registro")
+    public String Registro() {
+        return "registro_proveedor.html";
     }
 
-    @PostMapping("/registro")
-    public String Registro(@RequestParam String nombreProv,
-            @RequestParam String contrasenia, @RequestParam int telefono, @RequestParam String servicio,
-            @RequestParam int precioHora, @RequestParam(required = false) String descripcion,
-            @RequestParam String email, ModelMap modelo) {
+    @PostMapping("/registrar")
+    public String Registrar(@RequestParam String nombreProv, @RequestParam String email,
+            @RequestParam String password, @RequestParam String password2, @RequestParam int telefono, @RequestParam String servicio,
+            @RequestParam int precioHora, @RequestParam(required = false) String descripcion, ModelMap modelo) {
 
         try {
-            proveedorServicio.crearProveedor(nombreProv, descripcion, telefono, servicio);
+            proveedorServicio.crearProveedor(nombreProv, email, password, password2, telefono, servicio, precioHora, descripcion);
+            
             modelo.put("exito", "Usted se registró correctamente");
         } catch (MiException ex) {
             modelo.put("error", ex.getMessage());
-            return "registro_usuario.html";
+            return "registro_proveedor.html";
         }
         return "index.html";
     }

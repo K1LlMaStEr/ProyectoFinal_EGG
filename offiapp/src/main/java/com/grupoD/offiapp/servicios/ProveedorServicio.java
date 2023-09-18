@@ -11,7 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 import com.grupoD.offiapp.repositorios.ProveedorRepositorio;
-
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class ProveedorServicio {
@@ -21,14 +21,18 @@ public class ProveedorServicio {
 
     @Transactional
 
-    public void crearProveedor(String nombreProv, String descripcion, int telefono, String servicio) throws MiException {
-        validar(nombreProv, servicio);
+    public void crearProveedor(String nombreProv, String email, String password, String password2, int telefono, String servicio, int precioHora, String descripcion) throws MiException {
+        validar(nombreProv, email, password, password2, servicio);
 
         Proveedor proveedor = new Proveedor();
 
         proveedor.setNombreProv(nombreProv);
-        proveedor.setDescripcion(descripcion);
+        proveedor.setEmail(email);
+        proveedor.setContrasenia(new BCryptPasswordEncoder().encode(password));
         proveedor.setTelefono(telefono);
+        proveedor.setServicio(servicio);
+        proveedor.setPrecioHora(precioHora);
+        proveedor.setDescripcion(descripcion);
 
         //proveedor.setFecha(new Date());
         proveedorRepositorio.save(proveedor);
@@ -44,10 +48,10 @@ public class ProveedorServicio {
     }
 
     @Transactional
-    public void modificarProveedor(String nombreProv, String descripcion, int telefono, String servicio, String id) throws MiException {
-        validar(nombreProv, servicio);
+    public void modificarProveedor(String nombreProv, String email, String password, String password2, int telefono, String servicio, int precioHora, String descripcion) throws MiException {
+        validar(nombreProv, email, password, password2, servicio);
 
-        Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
+   /*     Optional<Proveedor> respuesta = proveedorRepositorio.findById(id);
         Proveedor proveedor = new Proveedor();
         if (respuesta.isPresent()) {
 
@@ -60,6 +64,7 @@ public class ProveedorServicio {
 
             proveedorRepositorio.save(proveedor);
         }
+*/
     }
 
     @Transactional
@@ -72,11 +77,21 @@ public class ProveedorServicio {
         }
     }
 
-    private void validar(String nombre, String servicioOfrecidos) throws MiException {
-        if (nombre.isEmpty() || nombre == null) {
-            throw new MiException("el nombre no puede estar vacio");
+
+    public void validar(String nombreProv, String email, String password, String password2, String servicio) throws MiException {
+        if (nombreProv == null || nombreProv.isEmpty()) {
+            throw new MiException("El nombre no puede estar vacío");
         }
-        if (servicioOfrecidos.isEmpty() || servicioOfrecidos == null) {
+        if (email == null || email.isEmpty()) {
+            throw new MiException("El email no puede estar vacío");
+        }
+        if (password == null || password.isEmpty() || password.length() <= 5) {
+            throw new MiException("La contraseña no puede estar vacía y debe tener al menos 6 caracteres");
+        }
+        if (!password.equals(password2)) {
+            throw new MiException("Las contraseñas no coinciden");
+        }
+        if (servicio.isEmpty() || servicio == null) {
             throw new MiException("el servicio no puede estar vacio");
         }
     }
